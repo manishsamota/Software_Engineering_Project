@@ -1,16 +1,43 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import Header from './Header';
+import { getdata } from '../Api/Api';
 
 import './Home.css'
 import Footer from './Footer';
 
 function Home() {
+
+  const [data, setData] = React.useState([]);
+
+  React.useEffect (() => {
+
+    getdata().then((posts) => setData(posts))
+    }, [])
+// console.log(data.results[0].creator)
+  console.log(data)
+
+
     return (
 
   
         <div className="home">
+          {
+           <h1>{data.page_size}</h1>
+          }
+
+          This is top
           <Header /> 
+{/* 
+          {
+
+          results[0].url
+            data.map(e =><li>{e.data}</li> )
+          } */}
             {/* Home page carousel code start form here */}
+
+
+           
 
  <div id="carouselExampleCaptions" class="carousel slide">
   <div class="carousel-indicators">
