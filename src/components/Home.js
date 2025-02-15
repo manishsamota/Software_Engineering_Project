@@ -2,11 +2,14 @@ import * as React from 'react';
 import Header from './Header';
 
 import './Home.css'
+import Footer from './Footer';
 
 function Home() {
     return (
+
+  
         <div className="home">
-           
+          <Header /> 
             {/* Home page carousel code start form here */}
 
  <div id="carouselExampleCaptions" class="carousel slide">
@@ -54,7 +57,7 @@ function Home() {
             {/* Home page Cards code start from here */}
             {/* row 1 start from here */}
 
-<div class="row row-cols-1 my-5 row-cols-md-3 g-4 ">
+<div class="row cards_calss row-cols-1 my-5 row-cols-md-3 g-4 ">
   <div class="col">
     <div class="card h-100   ">
       <img src="Card_1.jpg" class="card-img-top" alt="..."/>
@@ -88,7 +91,7 @@ function Home() {
 
 {/* row 2 start from here */}
 
-<div class="row row-cols-1 my-5 row-cols-md-3 g-4 ">
+<div class="row cards_calss row-cols-1 my-5 row-cols-md-3 g-4 ">
   <div class="col">
     <div class="card h-100   ">
       <img src="Card_4.jpg" class="card-img-top" alt="..."/>
@@ -122,6 +125,8 @@ function Home() {
 {/* row 2 end here */}
             {/* Home page Cards code end here */}
             
+<Footer />
+
         </div>
 
     );
