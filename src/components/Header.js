@@ -1,11 +1,18 @@
 import * as React from 'react';
 
 import './Header.css'
+import { useAuth0, User } from "@auth0/auth0-react";
 
 
 function Header() {
+
+  const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
+  
+
     return (
      
+      
+
       <div className="App">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -35,18 +42,23 @@ function Header() {
       </form>
 
       <ul class="navbar-nav mb-2 mx-5 mb-lg-0">
-      <li class="nav-item">
-       
-          <a class="nav-link active" aria-current="page" href="/login" >
-          <button type="button" class="btn btn-outline-primary mx- 2 ">
-            Login
-            </button>
-            </a>
-         
-        </li>
-        </ul>
-       
+    
+      { isAuthenticated && ( <div>{User.name}</div> ) }
+     
+           <li class="nav-item">
 
+           <button type='button' class='btn btn-outline-primary mx-2' onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+            Log Out
+            </button>
+          </li>
+   
+        <li class="nav-item">
+        <button type='button' class='btn btn-outline-primary mx-2' onClick={() => loginWithRedirect()}>
+          Log In
+          </button>    
+          </li>
+    
+        </ul>
     </div>
   </div>
 </nav>
