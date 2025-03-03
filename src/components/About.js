@@ -6,7 +6,7 @@ function About() {
 
     return(
         <div>
-            <Header />
+<Header />
             
 <section class="py-3 py-md-5">
   <div class="container mb-4 mb-md-5">

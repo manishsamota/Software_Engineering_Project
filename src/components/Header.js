@@ -36,10 +36,7 @@ function Header() {
           <a class="nav-link active" aria-current="page" href="/contact" >Contact Us</a>
         </li>
       </ul>
-      <form class="d-flex mx-1">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+    
 
       <ul class="navbar-nav mb-2 mx-5 mb-lg-0">
     
