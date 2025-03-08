@@ -21,8 +21,8 @@ const MediaSearch = () => {
     try {
       const response = await axios.get('https://api.openverse.org/v1/images/', {
         params: {
-          q: query, // Search query
-          page_size: 20, // Number of results per page
+          q: query,
+          page_size: 20,
         },
       });
       setResults(response.data.results);
@@ -35,47 +35,62 @@ const MediaSearch = () => {
   };
 
   return (
-
     <div>
-    <Header />
+      <Header />
 
-    <div className="media-search">
-      <h2>Search Openverse Media</h2>
-      <form onSubmit={handleSearch}>
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Enter search term (e.g., cats)"
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? 'Searching...' : 'Search'}
-        </button>
-      </form>
+      <div className="media-search">
+        <h2>Search Openverse Media</h2>
+<div className="input-group mb-3"> {/* Use input-group for proper alignment */}
 
-      {error && <p className="error">{error}</p>}
+        <form className="form-inline d-flex  mx-auto my-5" onSubmit={handleSearch} style={{ width: '50%' }}>
 
-      <div className="results">
-        {results.length > 0 ? (
-          results.map((item) => (
-            <div >
+          <input
 
-              <Card title= {item.title} cardimage = {item.thumbnail} url ={item.url} creator = {item.creator} />
-            </div>
-            
-           
+            className="form-control mr-5" // Use margin for spacing
 
+            type="text"
 
-          
-          ))
-        ) : (
-          !loading && <p>No results found. Try a different search term.</p>
-        )}
+            value={query}
+
+            onChange={(e) => setQuery(e.target.value)}
+
+            placeholder="Enter search term (e.g., cats)"
+
+            aria-label="Search" // Accessibility improvement
+
+          />
+
+          <button className="btn btn-outline-success ml-5 pl-5" type="submit" disabled={loading}>
+
+            {loading ? 'Searching...' : 'Search'}
+
+          </button>
+
+        </form>
+
+        </div>
+
+        {error && <p className="error">{error}</p>}
+
+        <div className=" card-main row">
+          {results.length > 0 ? (
+            results.map((item) => (
+              <div className="col-12 col-md-6 col-lg-6 col-xl-4 " key={item.id}> 
+                <Card 
+                  title={item.title} 
+                  cardimage={item.thumbnail} 
+                  url={item.url} 
+                  creator={item.creator} 
+                />
+              </div>
+            ))
+          ) : (
+            !loading && <p>No results found. Try a different search term.</p>
+          )}
+        </div>
       </div>
-    </div>
 
-    <Footer />
-
+      <Footer />
     </div>
   );
 };
